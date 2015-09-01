@@ -1,31 +1,31 @@
+
 package com.collegeDays.entity;
 
 import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
+import com.collegeDays.constant.StatusType;
 
 @Entity
-public class User implements UserDetails{
+public class User extends NamedEntity implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
     @Length(max = 255)
     private String password;
-    
-    @Id
+
     @Column(nullable = false)
     @Length(max = 255)
     private String email;
 
-   
+    
+
     public String getEmail() {
 	return email;
     }
@@ -42,34 +42,44 @@ public class User implements UserDetails{
 	this.email = email;
     }
 
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String getUsername() {
+	return super.getName();
+    }
 
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+    	return true;
+	//return StatusType.ACTIVE.toString().equals(super.getStatus().toString());
+    }
 
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+    //	System.out.println(StatusType.ACTIVE.toString().equals(super.getStatus().toString()));
+	return true;
+    }
 
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+    	return true;
+	//return StatusType.ACTIVE.toString().equals(super.getStatus().toString());
+    }
 
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isEnabled() {
+    	return true;
+	//return StatusType.ACTIVE.toString().equals(super.getStatus().toString());
+    }
+
+    @Override
+    public String toString() {
+	return "User [email=" + email + "]";
+    }
+
 }
-
