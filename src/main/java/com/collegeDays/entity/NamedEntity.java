@@ -1,6 +1,10 @@
 
 package com.collegeDays.entity;
 
+/**
+ * @author Mayank
+ * 
+ */
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass

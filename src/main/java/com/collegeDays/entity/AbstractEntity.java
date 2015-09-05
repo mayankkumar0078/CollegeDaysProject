@@ -1,6 +1,9 @@
 
 package com.collegeDays.entity;
-
+/**
+ * @author Mayank
+ * 
+ */
 import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;

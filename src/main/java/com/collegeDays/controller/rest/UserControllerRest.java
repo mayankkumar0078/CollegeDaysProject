@@ -1,5 +1,8 @@
 package com.collegeDays.controller.rest;
-
+/**
+ * @author Mayank
+ * 
+ */
 import javax.annotation.Resource;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -21,59 +24,16 @@ import com.collegeDays.entity.User;
 @Transactional
 public class UserControllerRest {
 
-   
+	@Resource
+	private UserRepository userRepository;
 
-	 @Resource
-	 private UserRepository userRepository;
+	@RequestMapping(value = "/user", method = RequestMethod.POST, headers = "Accept=application/json")
+	public @ResponseBody User create(@RequestBody UserDTO userDTO) {
+		System.out.println("Creating a new role with information: " + userDTO);
+		User user = new User();
+		user.setEmail(userDTO.getEmail());
+		user.setPassword(userDTO.getUserName());
+		return userRepository.save(user);
+	}
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST, headers = "Accept=application/json")
-    public @ResponseBody User create(@RequestBody UserDTO userDTO) {
-    	System.out.println("Creating a new role with information: " + userDTO);
-    	User user = new User();
-    	user.setEmail(userDTO.getEmail());
-    	user.setPassword(userDTO.getUserName());
-    	return userRepository.save(user);
-    }
-
-    /*@RequestMapping(value = "/api/roles/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
-    public @ResponseBody
-    Role delete(@PathVariable("id") Long id) {
-	logger.debug("Deleting role with id: " + id);
-
-	Role deleted = roleRepository.findOne(id);
-
-	roleRepository.delete(deleted);
-
-	return deleted;
-    }
-
-    @RequestMapping(value = "/api/roles", method = RequestMethod.GET)
-    public @ResponseBody
-    List<Role> findAll() {
-	logger.debug("Finding all roles");
-
-	return roleRepository.findAll();
-    }
-
-    @RequestMapping(value = "/api/roles/{id}", method = RequestMethod.GET)
-    public @ResponseBody
-    Role findById(@PathVariable("id") Long id) {
-	logger.debug("Finding role by id: " + id);
-
-	return roleRepository.findOne(id);
-    }
-
-    @RequestMapping(value = "/api/roles/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
-    public @ResponseBody
-    Role update(@PathVariable("id") Long id, @RequestBody RoleDTO updated) {
-	logger.debug("Updating role with information: " + updated);
-
-	Role role = roleRepository.findOne(updated.getId());
-
-	role.setName(updated.getName());
-	role.setDescription(updated.getDescription());
-
-	return role;
-    }
-*/
 }

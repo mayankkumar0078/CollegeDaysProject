@@ -1,5 +1,9 @@
 package com.collegeDays.dto;
 
+/**
+ * @author Mayank
+ * 
+ */
 public class UserDTO extends BaseDTO{
 
     private String userName;

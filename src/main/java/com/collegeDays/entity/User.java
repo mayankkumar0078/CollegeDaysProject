@@ -1,6 +1,9 @@
 
 package com.collegeDays.entity;
-
+/**
+ * @author Mayank
+ * 
+ */
 import java.util.Collection;
 
 import javax.persistence.Column;

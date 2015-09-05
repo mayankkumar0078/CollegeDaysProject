@@ -1,6 +1,10 @@
 
 package com.collegeDays.entity;
 
+/**
+ * @author Mayank
+ * 
+ */
 import java.util.Date;
 
 import javax.persistence.EnumType;

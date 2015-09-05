@@ -1,5 +1,8 @@
 package com.collegeDays.controller;
-
+/**
+ * @author Mayank
+ * 
+ */
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;

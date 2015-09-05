@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.collegeDays.entity.User;
 
 /**
- * @author MAYANK KUMAR1
- *
+ * @author Mayank
+ * 
  */
 @Repository
 @Transactional
