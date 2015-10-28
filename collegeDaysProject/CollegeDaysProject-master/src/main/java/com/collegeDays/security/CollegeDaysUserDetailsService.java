@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.collegeDays.dao.UserRepository;
 import com.collegeDays.entity.User;
+import com.collegeDays.repository.UserRepository;
 
 import static com.collegeDays.util.CommonUtil.isEmpty;;
 

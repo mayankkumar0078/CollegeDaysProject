@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.collegeDays.dao.UserRepository;
 import com.collegeDays.entity.User;
+import com.collegeDays.repository.UserRepository;
 
 @Controller
 public class AppController {

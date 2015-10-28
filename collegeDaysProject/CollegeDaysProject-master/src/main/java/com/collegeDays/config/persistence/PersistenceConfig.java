@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "com.collegeDays.dao" })
+@EnableJpaRepositories(basePackages = { "com.collegeDays.repository" })
 public class PersistenceConfig {
 
     @Autowired

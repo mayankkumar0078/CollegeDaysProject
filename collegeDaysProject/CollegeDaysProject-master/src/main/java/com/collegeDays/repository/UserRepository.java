@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.collegeDays.dao;
+package com.collegeDays.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +16,6 @@ import com.collegeDays.entity.User;
  */
 @Repository
 @Transactional
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 	public User findByEmail(@Param("email") String email);
 }

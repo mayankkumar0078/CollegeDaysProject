@@ -53,7 +53,7 @@ public class User extends NamedEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-	return super.getName();
+	return "abhi";
     }
 
     @Override
