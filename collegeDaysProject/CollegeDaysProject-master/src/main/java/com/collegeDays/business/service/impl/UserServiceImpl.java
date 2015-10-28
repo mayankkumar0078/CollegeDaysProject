@@ -1,14 +1,18 @@
 package com.collegeDays.business.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.collegeDays.business.domain.request.LoginRequest;
 import com.collegeDays.business.domain.response.UserResponse;
 import com.collegeDays.business.service.UserService;
-import com.collegeDays.dao.UserRepository;
 import com.collegeDays.entity.User;
+import com.collegeDays.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -34,4 +38,13 @@ public class UserServiceImpl implements UserService{
 			return userResponse;
 	}
 
+	@Override
+	@Cacheable(value="users")
+	public List<User> getUsers(int userId){
+		List<User> list = new ArrayList<User>();
+		User user = userRepository.findOne(userId);
+		list.add(user);
+		return list;
+		
+	}
 }
