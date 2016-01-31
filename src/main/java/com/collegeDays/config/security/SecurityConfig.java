@@ -26,19 +26,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	auth.userDetailsService(userDetailService).passwordEncoder(this.passwordEncoder());
+    	auth.userDetailsService(userDetailService).passwordEncoder(this.passwordEncoder());
     }
 
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-	return new BCryptPasswordEncoder();
+    	return new BCryptPasswordEncoder();
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-	http.csrf().disable();
-	http.authorizeRequests().antMatchers("/home").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login")
-		.failureUrl("/login?error").permitAll();
-	http.logout().logoutSuccessUrl("/");
+		http.csrf().disable();
+		http.authorizeRequests().antMatchers("/home","/rest/api/**").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login")
+			.failureUrl("/login?error").permitAll();
+		http.logout().logoutSuccessUrl("/");
     }
 }
